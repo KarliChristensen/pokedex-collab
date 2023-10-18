@@ -4,18 +4,26 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function Home() {
-  const [pokemons, setPokemons] = useState("");
+  const [allPokemons, setAllPokemons] = useState([]);
+  const [onePokemon, setOnePokemon] = useState({});
 
-  const getPokemon = () => {
-    axios.get("https://pokeapi.co/api/v2/pokemon").then((response) => {
-      setPokemons(response.data)
+  const getOnePokemon = (name) => {
+    const foundOnePokemon = allPokemons.filter((pokemon) => {
+      return pokemon.name === name;
+    });
+    setOnePokemon(foundOnePokemon)
+  };
+
+  const getAllPokemons = () => {
+    axios.get("https://pokeapi.co/api/v2/pokemon/?limit=1300").then((response) => {
+      setAllPokemons(response.data.results);
     });
   };
 
   useEffect(() => {
-    getPokemon();
+    getAllPokemons();
   }, []);
-  console.log(pokemons)
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
