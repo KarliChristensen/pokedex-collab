@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { v4 as uuidv4 } from 'uuid'
 import axios from "axios";
 
 export default function Home() {
@@ -130,6 +131,12 @@ export default function Home() {
             Instantly deploy your Next.js site to a shareable URL with Vercel.
           </p>
         </a>
+      </div>
+      {onePokemon[0]?.name && <p className="text-xl border rounded-md text-center px-5 py-2">{onePokemon[0].name}</p>}
+      <div className="text-left h-[200px] w-[400px] overflow-y-auto grid grid-cols-3">
+        {allPokemons.map((pokemon) => {
+          return <p className="hover:cursor-pointer" key={uuidv4()} onClick={() => getOnePokemon(pokemon.name)}>{pokemon.name}</p>
+        })}
       </div>
     </main>
   );
