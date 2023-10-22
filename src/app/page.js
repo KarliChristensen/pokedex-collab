@@ -28,7 +28,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex"></div>
 
       {onePokemon[0]?.name && (
@@ -36,7 +36,7 @@ export default function Home() {
           {onePokemon[0].name}
         </p>
       )}
-      <div className="text-left h-[80vh] w-fit overflow-y-auto grid grid-cols-10">
+      <div className="text-left h-fit w-fit overflow-y-auto grid grid-cols-10 gap-2">
         {allPokemons.map((pokemon) => {
           return (
             <PokemonCard key={uuidv4()} pokemon={pokemon} getOnePokemon={getOnePokemon} />
