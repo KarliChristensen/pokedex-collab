@@ -1,8 +1,8 @@
 "use client";
-import Image from "next/image";
 import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
+import PokemonCard from "./components/card";
 
 export default function Home() {
   const [allPokemons, setAllPokemons] = useState([]);
@@ -17,7 +17,7 @@ export default function Home() {
 
   const getAllPokemons = () => {
     axios
-      .get("https://pokeapi.co/api/v2/pokemon/?limit=1300")
+      .get("https://pokeapi.co/api/v2/pokemon/?limit=20")
       .then((response) => {
         setAllPokemons(response.data.results);
       });
@@ -36,16 +36,10 @@ export default function Home() {
           {onePokemon[0].name}
         </p>
       )}
-      <div className="text-left h-[200px] w-[400px] overflow-y-auto grid grid-cols-3">
+      <div className="text-left h-[80vh] w-fit overflow-y-auto grid grid-cols-10">
         {allPokemons.map((pokemon) => {
           return (
-            <p
-              className="hover:cursor-pointer"
-              key={uuidv4()}
-              onClick={() => getOnePokemon(pokemon.name)}
-            >
-              {pokemon.name}
-            </p>
+            <PokemonCard key={uuidv4()} pokemon={pokemon} getOnePokemon={getOnePokemon} />
           );
         })}
       </div>
