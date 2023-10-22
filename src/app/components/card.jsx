@@ -20,9 +20,9 @@ export default function PokemonCard({ pokemon, getOnePokemon }) {
     <img src={pokemonInfo.sprites?.front_default} alt="sprite"/>
       <p
         className="hover:cursor-pointer"
-        onClick={() => getOnePokemon(pokemon.species.name)}
+        onClick={() => getOnePokemon(pokemon?.name)}
       >
-        {pokemon.name}
+        {pokemon.species?.name}
       </p>
     </div>
   );
