@@ -22,7 +22,7 @@ export default function PokemonCard({ pokemon, getOnePokemon }) {
         className="hover:cursor-pointer"
         onClick={() => getOnePokemon(pokemon?.name)}
       >
-        {pokemon.species?.name}
+        {pokemonInfo.species?.name}
       </p>
     </div>
   );
