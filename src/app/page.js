@@ -36,7 +36,7 @@ export default function Home() {
           {onePokemon[0].name}
         </p>
       )}
-      <div className="text-left h-fit w-fit overflow-y-auto grid grid-cols-10 gap-2">
+      <div className="text-left h-fit w-fit overflow-y-auto grid grid-cols-10 gap-1">
         {allPokemons.map((pokemon) => {
           return (
             <PokemonCard key={uuidv4()} pokemon={pokemon} getOnePokemon={getOnePokemon} />
