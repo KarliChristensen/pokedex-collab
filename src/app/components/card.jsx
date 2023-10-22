@@ -27,7 +27,6 @@ export default function PokemonCard({ pokemon, getOnePokemon }) {
 
   useEffect(() => {
     getPokemonInfo();
-    setImage(pokemonInfo?.sprites?.front_default);
   }, []);
 
   useEffect(() => {
