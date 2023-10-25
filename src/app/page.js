@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
-import axios from "axios";
+import axios, { all } from "axios";
 import PokemonCard from "./components/card";
 import PokemonCarousel from "./components/carousel";
 
