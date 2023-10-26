@@ -17,20 +17,24 @@ export default function PokemonCarousel({ allPokemons }) {
 
   useEffect(() => {
     getPokemonImages();
-    setLoading(false)
+    setLoading(false);
   }, [allPokemons]);
 
   if (loading) {
     return <div className="loading"></div>;
   } else {
     return (
-      <ul className="flex overflow-x-auto">
-        {pokemonImageArray.map((image, i) => (
-          <li key={i} className="flex-shrink-0">
-            <img src={image} width="250" height="250" alt={`Item ${i}`} />
-          </li>
-        ))}
-      </ul>
+      <div className="w-full">
+        <ul className="w-full flex overflow-x-auto">
+          {pokemonImageArray.map((image, i) => (
+            <div key={i} className="flex-shrink-0 bg-red-700 mr-5 rounded-lg ">
+              <div className="flex flex-col">
+                <img src={image} className="h-[200px] top-0" alt={`Item ${i}`} />
+              </div>
+            </div>
+          ))}
+        </ul>
+      </div>
     );
   }
 }
