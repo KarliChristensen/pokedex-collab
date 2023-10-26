@@ -6,13 +6,13 @@ export default function PokemonCarousel({ allPokemons }) {
   const [pokemonInfo, setPokemonInfo] = useState({});
   const [pokemonImageArray, setPokemonImageArray] = useState([]);
 
-  const getPokemonImages = () => {
+  const getPokemonImages = async () => {
     let imageArray = [];
-    allPokemons.forEach(async(pokemon) => {
-      const response = await axios.get(pokemon.url)
-        imageArray.push(response.data.sprites.front_default)
-    });
-    setPokemonImageArray(imageArray)
+    for (const pokemon of allPokemons) {
+      const response = await axios.get(pokemon.url);
+      imageArray.push(response.data.sprites.front_default);
+    }
+    setPokemonImageArray(imageArray);
   };
 
   useEffect(() => {
